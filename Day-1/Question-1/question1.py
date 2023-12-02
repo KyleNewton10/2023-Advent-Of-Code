@@ -3,8 +3,12 @@
 # 3. Add Together
 # 4. Return output to terminal
 
-def strip_letters(s: str):
-    re.sub(r'[\d.*\d]', '', s)
-    print(s)
+import re
 
-strip_letters("1abc2")
+def strip_letters(s: str):
+    s2 = re.sub(r'[^\d]', '', s)
+    return s2
+
+def read_from_txt(fileName: str):
+    with open(fileName) as openedFile:
+        lines = [line.rstrip() for line in openedFile]
