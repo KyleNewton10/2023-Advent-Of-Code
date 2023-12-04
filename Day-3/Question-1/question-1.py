@@ -68,14 +68,10 @@ def check_if_number_exists_in_range(xPos, yPos, numbers_list):
 
 def get_adjacient_values(xPos, yPos, grid, nums):
     temp_nums = nums[:]
-    print('xPos: ' + str(xPos) + ' yPos: ' + str(yPos))
     # Not outside Columns
     if xPos != 0 and xPos < len(grid[0])-1:
-        print("Step1")
-        print("xPos: " + str(xPos) + " yPos: " + str(yPos))
         # Not Top or Bottom Row
         if yPos != 0 and yPos < len(grid)-1:
-            print("Step2")
             upLeft = check_if_number_exists_in_range(xPos-1, yPos-1, temp_nums)
             up = check_if_number_exists_in_range(xPos-1, yPos, temp_nums)
             upRight = check_if_number_exists_in_range(xPos-1, yPos+1, temp_nums)
@@ -87,7 +83,6 @@ def get_adjacient_values(xPos, yPos, grid, nums):
             return ([upLeft, up, upRight], [centerLeft, None, centerRight], [downLeft, down, downRight])
     #Edge Columns
     if xPos == 0:
-        print("Step3")
         if yPos != 0 and yPos < len(grid)-1:
             up = check_if_number_exists_in_range(xPos-1, yPos, temp_nums)
             upRight = check_if_number_exists_in_range(xPos-1, yPos+1, temp_nums)
@@ -96,21 +91,17 @@ def get_adjacient_values(xPos, yPos, grid, nums):
             downRight = check_if_number_exists_in_range(xPos+1, yPos+1, temp_nums)
             return ([None, up, upRight], [None, None, centerRight], [None, down, downRight])
         elif yPos == 0:
-            print("Step4")
             centerRight = check_if_number_exists_in_range(xPos, yPos+1, temp_nums)
             down = check_if_number_exists_in_range(xPos+1, yPos, temp_nums)
             downRight = check_if_number_exists_in_range(xPos+1, yPos+1, temp_nums)
             return ([None, None, None], [None, None, centerRight], [None, down, downRight])
         elif yPos == len(grid)-1:
-            print("Step5")
             up = check_if_number_exists_in_range(xPos, yPos-1, temp_nums)
             upRight = check_if_number_exists_in_range(xPos+1, yPos-1, temp_nums)
             centerRight = check_if_number_exists_in_range(xPos+1, yPos, temp_nums)
             return ([None, up, upRight], [None, None, centerRight], [None, None, None])
     if xPos == len(grid[0])-1:
-        print("Step6")
         if yPos != 0 and yPos < len(grid)-1:
-            print("Step7")
             upLeft = check_if_number_exists_in_range(xPos-1, yPos-1, temp_nums)
             up = check_if_number_exists_in_range(xPos-1, yPos, temp_nums)
             centerLeft = check_if_number_exists_in_range(xPos, yPos-1, temp_nums)
@@ -118,13 +109,11 @@ def get_adjacient_values(xPos, yPos, grid, nums):
             down = check_if_number_exists_in_range(xPos+1, yPos, temp_nums)
             return ([upLeft, up, None], [centerLeft, None, None], [downLeft, down, None])
         elif yPos == 0:
-            print("Step8")
             centerLeft = check_if_number_exists_in_range(xPos-1, yPos, temp_nums)
             downLeft = check_if_number_exists_in_range(xPos-1, yPos+1, temp_nums)
             down = check_if_number_exists_in_range(xPos-1, yPos-1, temp_nums)
             return ([None, None, None], [centerLeft, None, None], [downLeft, down, None])
         elif yPos == len(grid)-1:
-            print("Step9")
             upLeft = check_if_number_exists_in_range(xPos-1, yPos-1, temp_nums)
             up = check_if_number_exists_in_range(xPos-1, yPos, temp_nums)
             centerLeft = check_if_number_exists_in_range(xPos-1, yPos, temp_nums)
@@ -139,7 +128,7 @@ def get_total_adjacient_values(numbers_list, symbols_list, grid):
         values = get_adjacient_values(xPos, yPos, grid, numbers_list)
         total = 0
         # print(s)
-        print(values)
+        #print(values)
         if values is not None:
             for r in values:
                 for c in r:
