@@ -7,13 +7,13 @@ def read_from_txt(fileName: str):
 
 def process_data(data):
     for d in data:
-        if d == '':
+        if d == '' or d == ' ':
             data.remove(d)
 
 def check_winning_numbers(winning_numbers, drawn_numbers):
     points = 0
     for n in drawn_numbers:
-        if n in winning_numbers:
+        if n in winning_numbers and n != '':
             if points == 0:
                 points = 1
             else:
